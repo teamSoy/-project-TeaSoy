@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2017 at 06:35 PM
+-- Generation Time: Mar 15, 2017 at 11:24 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -96,13 +96,13 @@ CREATE TABLE `reports` (
   `situation_id` int(10) NOT NULL,
   `latitude` float(10,6) NOT NULL,
   `longitude` float(10,6) NOT NULL,
-  `remarks` varchar(20) NOT NULL,
   `descriptions` text NOT NULL,
   `date_reported` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `report_picture1` mediumblob NOT NULL,
   `report_picture2` mediumblob,
   `report_picture3` mediumblob,
-  `status` varchar(20) NOT NULL
+  `status` varchar(20) DEFAULT NULL,
+  `commends` int(10) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -145,8 +145,17 @@ CREATE TABLE `users` (
   `age` int(3) NOT NULL,
   `email_address` varchar(100) NOT NULL,
   `contact_no` varchar(11) NOT NULL,
-  `profile_picture` mediumblob NOT NULL
+  `profile_picture` mediumblob NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `account_id`, `first_name`, `last_name`, `gender`, `birthday`, `age`, `email_address`, `contact_no`, `profile_picture`, `username`, `password`) VALUES
+(1, 1, 'Paul Vincent', 'Nonat', 'Male', '1996-03-03', 20, 'paulvincentnonat@gmail.com', '09953675020', 0x313233353233343132333132, 'paul028', 'nonat028');
 
 -- --------------------------------------------------------
 
@@ -249,12 +258,12 @@ ALTER TABLE `reports`
 -- AUTO_INCREMENT for table `situation`
 --
 ALTER TABLE `situation`
-  MODIFY `situation_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `situation_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
